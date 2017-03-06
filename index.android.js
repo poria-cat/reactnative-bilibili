@@ -20,64 +20,60 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 function Box(){
   return (
-    <View style={{width:width*0.4,borderRadius:5,borderWidth:1,borderColor:'#FAFAFA',height:height*0.4,margin:5}}>
-          <Image style={{width:width*0.4,height:height*0.2}} source={require('./4.jpg')}
-      >
-      <View style={{backgroundColor:'rgba(219, 219, 219, 0.2)',position:'absolute',width:width*0.4,height:height*0.05,bottom:0}}>
-      <Text style={{position:'absolute',bottom:2,left:2,fontSize:12,color:"#FAFAFA"}}>播1</Text>
-      <Text style={{position:'absolute',bottom:2,left:width*0.08,fontSize:12,color:"#FAFAFA"}}>弹1</Text>
-      <Text style={{position:'absolute',bottom:2,right:2,fontSize:12,color:"#FAFAFA"}}>1:32</Text>
-      
-      </View>
-      
-      
+    <View style={styles.boxContainer}>
+
+      <Image style={styles.videoCover} source={require('./4.jpg')}>
+        <Text style={[styles.videoMeta,styles.playNums]}>播1</Text>
+        <Text style={[styles.videoMeta,styles.danmuNums]}>弹1</Text>
+        <Text style={[styles.videoMeta,styles.videoTime]}>1:32</Text>
       </Image>
-      <View style={{height:height*0.2,backgroundColor:'#FAFAFA'}}>
-        <Text style={{padding:10,paddingTop:5,fontFamily: 'monospace'}}>我可能看到了假标题</Text>
-        <Text style={{padding:10,paddingTop:0,fontFamily: 'monospace'}}>短片</Text>
-        <View  style={{flex:1,flexDirection:'row'}}>
-         <Image style={{marginLeft:10,width:width*0.1,height:width*0.1,borderRadius:width*0.1}} source={require('./2.jpg')}/>
-            <View style={{flex:1,flexDirection:'column',paddingLeft:10}}>
-            <Text style={{fontSize:12}}>茯苓</Text>  
-            <Text style={{fontSize:12}}>7分前</Text>  
+
+      <View style={styles.videoInfoContainer}>
+
+        <Text style={styles.videoTitle}>我可能看到了假标题</Text>
+        <Text style={styles.videoTag}>短片</Text>
+
+        <View  style={styles.authorInfoContainer}>
+
+          <Image style={styles.avatar} source={require('./4.jpg')}/>
+          <View style={styles.authorInfoRight}>
+            <Text style={styles.authorInfoText}>茯苓</Text>  
+            <Text style={styles.authorInfoText}>7分前</Text>  
           </View>
-        </View>
+      </View>
          
       </View>
-        </View>
+    </View>
   )
 }
 export default class bilibili extends Component {
   render() {
     return (
      <View>
-       <View style={{height:height*0.15,backgroundColor:"#FB7299",elevation:4}}>
-         <View style={{flex:1,flexDirection:"row"}}>
+       <View style={styles.header}>
+         <View style={styles.headerContainer}>
          
-          <View style={{flex:1,flexDirection:"row",justifyContent:'flex-start',alignItems:'center'}}>
+          <View style={styles.headerLeft}>
             <Icon name="md-menu" color="#FAFAFA" size={30} style={{paddingLeft:-15}} />
             <Text style={{color:"#FAFAFA"}}>Login</Text>
           </View>
-          <View style={{flex:1,flexDirection:"row",justifyContent:'flex-end',alignItems:'center'}}>
+          <View style={styles.headerRight}>
             <Icon name="md-download" color="#FAFAFA" size={20} style={{paddingRight:20 }}  />
             <Icon name="md-search" color="#FAFAFA" size={20} style={{paddingRight:15 }}  />
           </View>
-          
-         
-          
          </View>
-        <View style={{flex:1,flexDirection:"row",justifyContent:"space-around",alignItems:'flex-end',paddingBottom:10}}>
-          <Text style={{color:"#FAFAFA"
-          }}>LIVE</Text>
-          <Text style={{color:"#FAFAFA"}}>HOME</Text>
-          <Text style={{color:"#FAFAFA"}}>BANGUMI</Text>
-          <Text style={{color:"#FAFAFA"}}>CATEGORY</Text>
-          <Text style={{color:"#FAFAFA"}}>DISCOVERY</Text>
+
+        <View style={styles.headerMenu}>
+          <Text style={styles.menuText}>LIVE</Text>
+          <Text style={styles.menuText}>HOME</Text>
+          <Text style={styles.menuText}>BANGUMI</Text>
+          <Text style={styles.menuText}>CATEGORY</Text>
+          <Text style={styles.menuText}>DISCOVERY</Text>
          </View>
-        
        </View>
-       <View style={{height:height*0.08,backgroundColor:"#F4F4F4",flexDirection:'row',alignItems:'center'}}>
-          <View style={{flex:2,flexDirection:'row',justifyContent:'space-around',alignItems:'flex-start'}}>
+
+       <View style={styles.bodyHeader}>
+          <View style={styles.bodyHeaderLeft}>
             <Text>全部</Text>
             <Text>|</Text>
             <Text>up主</Text>
@@ -86,7 +82,7 @@ export default class bilibili extends Component {
           <View style={{flex:1}}>
             <Text></Text>
           </View>
-          <View style={{flex:2,alignItems:'flex-end'}}>
+          <View style={styles.bodyHeaderRight}>
             <Text>233</Text>
           </View>
        </View>
@@ -96,18 +92,13 @@ export default class bilibili extends Component {
       />
       */}
       <ScrollView>
-      <View style={{flex:1,flexDirection:'row',justifyContent:'space-around',flexWrap:'wrap',margin:10}}>
+      <View style={styles.bodyContainer}>
         <Box />
         <Box />
         <Box />
         <Box />
         <Box />
         <Box />
-
-
-
-        
-     
       </View>
       </ScrollView>
      </View>
@@ -117,22 +108,118 @@ export default class bilibili extends Component {
 
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+  header: {
+    height:height*0.15,
+    backgroundColor:"#FB7299",
+    elevation:4
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  headerContainer: {
+    flex:1,
+    flexDirection:"row"
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  headerLeft: {
+    flex:1,
+    flexDirection:"row",
+    justifyContent:'flex-start',
+    alignItems:'center'
   },
+  headerRight: {
+    flex:1,
+    flexDirection:"row",
+    justifyContent:'flex-end',
+    alignItems:'center'
+  },
+  headerMenu: {
+    flex:1,
+    flexDirection:"row",
+    justifyContent:"space-around",
+    alignItems:'flex-end',
+    paddingBottom:10
+  },
+  menuText: {
+    color:"#FAFAFA"
+  },
+  bodyHeader: {
+    height:height*0.08,
+    backgroundColor:"#F4F4F4",
+    flexDirection:'row',
+    alignItems:'center'
+  },
+  bodyHeaderLeft: {
+    flex:2,
+    flexDirection:'row',
+    justifyContent:'space-around',
+    alignItems:'flex-start'
+  },
+  bodyHeaderRight: {
+    flex:2,
+    alignItems:'flex-end'
+  },
+  bodyContainer: {
+    flex:1,
+    flexDirection:'row',
+    justifyContent:'space-around',
+    flexWrap:'wrap',
+    margin:10
+  },
+  boxContainer: {
+    width:width*0.4,
+    borderRadius:5,
+    borderWidth:1,
+    borderColor:'#FAFAFA',
+    height:height*0.4,
+    margin:5
+  },
+  videoCover: {
+    width:width*0.4,
+    height:height*0.2
+  },
+  videoMeta: {
+    position:'absolute',
+    bottom:2,
+    color:"#FAFAFA"
+  },
+  playNums: {
+    left:2,
+    fontSize:12,
+  },
+  videoTime: {
+    right:2,
+    fontSize:12
+  },
+  danmuNums: {
+    left:width*0.08,
+    fontSize:12
+  },
+  videoInfoContainer: {
+    height:height*0.2,
+    backgroundColor:'#FAFAFA'
+  },
+  videoTitle: {
+    padding:10,
+    paddingTop:5
+  },
+  videoTag: {
+    padding:10,
+    paddingTop:0
+  },
+  authorInfoContainer: {
+    flex:1,
+    flexDirection:'row'
+  },
+  avatar: {
+    marginLeft:10,
+    width:width*0.1,
+    height:width*0.1,
+    borderRadius:width*0.1
+  },
+  authorInfoRight: {
+    flex:1,flexDirection:'column',paddingLeft:10
+  },
+  authorInfoText: {
+    fontSize:12
+  }
+  
 });
 
 AppRegistry.registerComponent('bilibili', () => bilibili);
